@@ -1,12 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import './index.scss';
+import App from '@app/App';
+import reportWebVitals from '@app/reportWebVitals';
+import {Provider} from 'react-redux';
+import {toast} from 'react-toastify';
+import store from '@store';
+
+import {library} from '@fortawesome/fontawesome-svg-core';
+import {fas} from '@fortawesome/free-solid-svg-icons';
+import {fab} from '@fortawesome/free-brands-svg-icons';
+import {far} from '@fortawesome/free-regular-svg-icons';
+
+library.add(fab, fas, far);
+
+toast.configure({
+    autoClose: 3000,
+    draggable: false,
+    position: 'top-right',
+    hideProgressBar: false,
+    newestOnTop: true,
+    closeOnClick: true,
+    rtl: false,
+    pauseOnHover: true
+});
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
